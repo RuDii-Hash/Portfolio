@@ -1,0 +1,35 @@
+
+# How to use
+
+1. Install
+
+    - Fork or duplicate the repository
+    - npm install
+    - npm run serve
+    - If any issue with serve, please read this: https://stackoverflow.com/questions/70582072/npm-run-fails-with-err-ossl-evp-unsupported For Windows Powershell, you can fix with `$env:NODE_OPTIONS = '--openssl-legacy-provider'` then `npm run serve`
+
+2. Customize
+* For the content
+    - Except for the projects pages, everything is static HTML that you can edit directly in the views and components files
+    - For the projects pages, the page is dynamically populated at runtime using data stored in Typescript files (data/GameProjectsData.ts and data/OtherProjectsData.ts). Make the changes directly in these .ts files
+    - Static files (images, icons, downloadables,..) should be placed in /public folder.
+    - Make the necessary changes in the .env file (this is mostly the site metadata). You need to "npm run serve" again when updating this file.
+
+* For the style
+    - The basic colors can be edited in the css/variables.less file.
+    - The rest of the CSS can be edited, if need be, directly inside each view and component.
+    - If you place custom CSS in your projects HTML data (that will be displayed in an overlay dialog), you must add the definition for this CSS in the css/projects.less file
+
+* Additional info & optimizations
+    - Images will be loaded on-demand when you switch tabs. It means if you have big images or animated gifs, you may want to preload them so the user sees them faster when they change tabs. To do this, you can call Helpers.preloadImages in app.vue to preload heavy images.
+
+3. Deploy
+
+    - npm run build
+    - copy the content of the "dist" folder (created by "npm run build") to the publish location.
+    - Check this example if you want to deploy to GitHub pages or some other major static content host: https://cli.vuejs.org/guide/deployment.html#github-pages
+
+
+# License
+
+This is GNU LGPL, check the LICENSE file.
